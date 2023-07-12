@@ -89,7 +89,7 @@
     }
     .nav-icon:hover {
       cursor: pointer;
-      background-color: rgb(168, 180, 164);
+      background-color: #fadede;
     }
   }
   @media (min-width: 1024px) {

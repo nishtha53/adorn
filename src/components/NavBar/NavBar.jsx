@@ -1,19 +1,25 @@
 import "./NavBar.css"
-import { NavLink } from "react-router-dom";
-
+import { NavLink, useNavigate } from "react-router-dom";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
 import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import { useProducts } from "../../contexts/product-context";
 //import PersonIcon from "@mui/icons-material/Person";
 
 const Navbar = () => {
     
+  const navigate = useNavigate();
+
     const activeIconStyles = ({ isActive }) => ({
       scale: isActive ? "1.125" : "1",
     });
+
   
+    const { productState, productDispatch } = useProducts();
+
+
     return (
       <div className="navbar">
         <NavLink to="/">
@@ -26,6 +32,11 @@ const Navbar = () => {
           <input
             type="search"
             placeholder="Search"
+            value={productState.searchInput}
+            onChange={(event) => {
+              productDispatch({ type: "SEARCH", payload: event.target.value });
+              navigate("/store");
+            }}
           />
         </div>
         <div className="nav-right">

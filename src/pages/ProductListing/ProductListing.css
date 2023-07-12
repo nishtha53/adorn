@@ -1,0 +1,110 @@
+
+.products-filters-container{
+    grid-area: filters;
+    overflow-y: scroll;
+}
+
+.products-outer-container{
+    grid-area: products;
+    padding: 0.5rem 1rem 1rem 1rem;
+    height: 90vh;
+    overflow-y: scroll;
+}
+
+.products-listing-outer-container{
+    position: relative;
+    padding: 0 0 1rem 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+        "products";
+}
+
+.loader-container{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.products-title-bar{
+    padding: 1rem 1rem 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filter-icon{
+    padding: 0.1rem 0.5rem;
+    border-radius: 3px;
+    border: 1px solid var(--primary-color);
+    background-color: var(--bg-grey);
+}
+
+.filter-icon svg{
+    font-size: 1.8rem;
+    color: var(--primary-color)
+}
+
+.products-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.no-products-msg{
+    padding-top: 2rem;
+    font-size: 1.3rem;
+}
+
+.products-listing-outer-container ::-webkit-scrollbar {
+    width: 0.2rem;
+}
+
+.products-listing-outer-container ::-webkit-scrollbar-track {
+    border-radius: 5px;
+    margin-block: 0.25em;
+    background: var(--ternary-color);
+}
+  
+.products-listing-outer-container ::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    .products-listing-outer-container{
+        position: relative;
+        grid-template-columns: 20% 1fr;
+        grid-template-areas: 
+            "filters products";
+        gap: 1rem;
+    }
+    .filter-icon{
+        display: none;
+    }
+    .loader-container{
+        position: absolute;
+        left: 40%;
+        top: 15%;
+    }
+}
+@media (min-width: 1024px) {
+    .products-listing-outer-container{
+        position: relative;
+        grid-template-columns: 20% 1fr;
+        grid-template-areas: 
+            "filters products";
+        gap: 1rem;
+    }
+    .products-filters-container{
+        height: 90vh;
+    }
+    .loader-container{
+        left: 45%;
+        top: 18%;
+    }
+}
