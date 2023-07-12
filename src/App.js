@@ -1,5 +1,5 @@
 import "./App.css";
-import NavRoutes from "./backend/routes/NavRoutes";
+import NavRoutes from "../src/routes/NavRoutes";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/NavBar/NavBar";
 

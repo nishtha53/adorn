@@ -4,13 +4,16 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
-import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+//import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { useProducts } from "../../contexts/product-context";
-//import PersonIcon from "@mui/icons-material/Person";
+import PersonIcon from "@mui/icons-material/Person";
+import { useAuth } from "../../contexts/auth-context";
 
 const Navbar = () => {
     
   const navigate = useNavigate();
+  const { token } = useAuth();
+
 
     const activeIconStyles = ({ isActive }) => ({
       scale: isActive ? "1.125" : "1",
@@ -61,9 +64,11 @@ const Navbar = () => {
           
           <NavLink
             style={activeIconStyles}
+            to={token ? "/profile" : "/login"}
+            title={token ? "Profile" : "Login"}
           >
             <div className="nav-icon">
-               <LoginOutlinedIcon />
+               <PersonIcon />
             </div>
           </NavLink>
         </div>
