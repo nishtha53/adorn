@@ -12,13 +12,17 @@ import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded
 const ProductCard  = ({product}) => {
     const navigate = useNavigate();
 
+    const {getProductById} = useProducts();
+
     const  {_id,title,imgSrc,price,description,starRating,metalType,inStock} = product
 
     return (
         <div className="product-card">
+            <Link to={`/product/${_id}`}>
             <div className="product-img">
-              <img src={imgSrc} alt={title}  />
+              <img src={imgSrc} alt={title} onClick={() => getProductById(_id)} />
             </div>
+            </Link>
           <div className="wishlist-btn">
               <FavoriteIcon
                 className="wishlist-fav-icon"
@@ -26,7 +30,9 @@ const ProductCard  = ({product}) => {
 
           </div>
           <div className="card-details">
-              <h3>{title}</h3>
+          <Link to={`/product/${_id}`}>
+          <h3 onClick={() => getProductById(_id)}>{title}</h3>
+        </Link>
           
             <div className="star">
               <StarRoundedIcon />

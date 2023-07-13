@@ -8,7 +8,7 @@ import {
 
   import { initialProductState, productReducer } from "../reducers/productReducer";
 
-  import { getProductsService, getCategoriesService } from "../services/productService";
+  import { getProductsService, getCategoriesService,getProductByIdService } from "../services/productService";
 
   export const ProductsContext = createContext();
 
@@ -61,6 +61,23 @@ import {
         }
       };
 
+      const getProductById = async (productId) => {
+        setIsLoading(true);
+        try {
+          const response = await getProductByIdService(productId);
+          const {
+            status,
+            data: { product },
+          } = response;
+          if (status === 200) {
+            productDispatch({ type: "GET_PRODUCT_DETAILS", payload: product });
+          }
+        } catch (error) {
+          console.error(error);
+        } finally {
+          setIsLoading(false);
+        }
+      };
 
     const toggleFilter = () => {
         setShowFilter((showFilter) => !showFilter);
@@ -119,7 +136,8 @@ const filteredByCategories =
             isLoading,
             showFilter,  
             toggleFilter,
-            filteredByRating
+            filteredByRating,
+            getProductById
           }}
         >
           {children}

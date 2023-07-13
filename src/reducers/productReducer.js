@@ -6,6 +6,7 @@ export  const initialProductState = {
     metalTypeInput: [],
     sortPriceRadioInput: "",
     ratingRange: 5,
+    productDetail: {},
 }
 
 export const productReducer = (state, {type,payload}) => {
@@ -42,6 +43,8 @@ export const productReducer = (state, {type,payload}) => {
                           products: payload.products,
                           allCategories: payload.categories,
                         };
+        case "GET_PRODUCT_DETAILS":
+                return { ...state, productDetail: payload };
         default:
             return state;
     }

@@ -1,12 +1,10 @@
 import "./UserAccount.css"
 
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { useAuth } from "../../contexts/auth-context";
 
 const UserAccount = () => {
     const location = useLocation();
     const isActiveProfile = location.pathname === "/profile";
-    const {  logoutHandler } = useAuth();
 
   
     return (
@@ -21,7 +19,7 @@ const UserAccount = () => {
               >
                 Profile
               </NavLink>
-              {/* <NavLink
+              <NavLink
                 to="/profile/addresses"
                 className={({ isActive }) => (isActive ? "active-tab" : "")}
               >
@@ -32,11 +30,10 @@ const UserAccount = () => {
                 className={({ isActive }) => (isActive ? "active-tab" : "")}
               >
                 Orders
-              </NavLink> */}
+              </NavLink>
             </div>
             <div className="account-data">
               <Outlet />
-              <button onClick={logoutHandler}>Logout</button>
             </div>
           </div>
         </section>

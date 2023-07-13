@@ -7,12 +7,15 @@ import Login from "../pages/Authentication/Login/Login";
 import Signup from "../pages/Authentication/Signup/Signup";
 import RequiresAuth from "./RequiredAuth";
 import UserAccount from "../pages/UserAccount/UserAccount";
+import UserProfile from "../components/UserProfile/UserProfile";
+import SingleProduct from "../pages/SingleProduct/SingleProduct";
 
 const NavRoutes = () => {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/store" element={<ProductListing />} />
+            <Route path="/product/:productID" element={<SingleProduct />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} /> 
 
@@ -40,8 +43,10 @@ const NavRoutes = () => {
           <RequiresAuth>
             <UserAccount />
           </RequiresAuth>
-        }
-      ></Route>
+        }>
+        <Route path="" element={<UserProfile />} />
+
+      </Route>
         </Routes>
     )
 }

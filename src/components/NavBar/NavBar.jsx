@@ -4,7 +4,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import ExploreOutlinedIcon from "@mui/icons-material/ExploreOutlined";
-//import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
+import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { useProducts } from "../../contexts/product-context";
 import PersonIcon from "@mui/icons-material/Person";
 import { useAuth } from "../../contexts/auth-context";
@@ -12,7 +12,7 @@ import { useAuth } from "../../contexts/auth-context";
 const Navbar = () => {
     
   const navigate = useNavigate();
-  const { token } = useAuth();
+  const { token, logoutHandler } = useAuth();
 
 
     const activeIconStyles = ({ isActive }) => ({
@@ -48,27 +48,29 @@ const Navbar = () => {
               <ExploreOutlinedIcon />
             </div>
           </NavLink>
+          {token && (
             <NavLink style={activeIconStyles} to="/wishlist" title="Wishlist">
               <div className="nav-icon">
                 <FavoriteBorderOutlinedIcon />
                  
               </div>
             </NavLink>
-          
+          )}
         
+            {token && (
             <NavLink style={activeIconStyles} to="/cart" title="Cart">
               <div className="nav-icon">
                 <ShoppingCartOutlinedIcon /> 
               </div>
             </NavLink>
-          
+          )}
           <NavLink
             style={activeIconStyles}
             to={token ? "/profile" : "/login"}
             title={token ? "Profile" : "Login"}
           >
             <div className="nav-icon">
-               <PersonIcon />
+            {token ? <LoginOutlinedIcon onClick={logoutHandler} /> : <PersonIcon />}
             </div>
           </NavLink>
         </div>
