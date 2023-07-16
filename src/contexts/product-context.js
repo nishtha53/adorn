@@ -4,6 +4,7 @@ import {
     useEffect,
     useState,
     useReducer,
+    useRef
   } from "react";
 
   import { initialProductState, productReducer } from "../reducers/productReducer";
@@ -13,6 +14,8 @@ import {
   export const ProductsContext = createContext();
 
   export const ProductsProvider = ({children}) => {
+    const cardTimerId = useRef();
+
     const [productState, productDispatch] = useReducer(
         productReducer,
         initialProductState
@@ -83,6 +86,13 @@ import {
         setShowFilter((showFilter) => !showFilter);
       };
 
+      const handleCardBtnsClick = (delay, callback, ...args) => {
+        clearTimeout(cardTimerId.current);
+        cardTimerId.current = setTimeout(() => {
+          callback(...args);
+        }, delay);
+      };
+
     
       useEffect(() => {
         getProducts();
@@ -137,7 +147,8 @@ const filteredByCategories =
             showFilter,  
             toggleFilter,
             filteredByRating,
-            getProductById
+            getProductById,
+            handleCardBtnsClick
           }}
         >
           {children}

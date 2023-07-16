@@ -8,6 +8,7 @@ import LoginOutlinedIcon from "@mui/icons-material/LoginOutlined";
 import { useProducts } from "../../contexts/product-context";
 import PersonIcon from "@mui/icons-material/Person";
 import { useAuth } from "../../contexts/auth-context";
+import { useWishlist } from "../../contexts/wishlist-context";
 
 const Navbar = () => {
     
@@ -22,7 +23,9 @@ const Navbar = () => {
   
     const { productState, productDispatch } = useProducts();
 
-
+    const {
+      wishlistState: { wishlist },
+    } = useWishlist();
     return (
       <div className="navbar">
         <NavLink to="/">
@@ -52,7 +55,7 @@ const Navbar = () => {
             <NavLink style={activeIconStyles} to="/wishlist" title="Wishlist">
               <div className="nav-icon">
                 <FavoriteBorderOutlinedIcon />
-                 
+                {token && wishlist.length > 0 && <p>{wishlist.length}</p>}
               </div>
             </NavLink>
           )}

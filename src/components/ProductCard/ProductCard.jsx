@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 import { useProducts } from "../../contexts/product-context";
-
+import { useWishlist } from "../../contexts/wishlist-context";
+import { useAuth } from "../../contexts/auth-context";
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
@@ -12,9 +13,12 @@ import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded
 const ProductCard  = ({product}) => {
     const navigate = useNavigate();
 
-    const {getProductById} = useProducts();
+    const {getProductById, handleCardBtnsClick} = useProducts();
+    const { addToWishlist, removeFromWishlist, itemInWishlist } = useWishlist();
 
-    const  {_id,title,imgSrc,price,description,starRating,metalType,inStock} = product
+    const {token}  = useAuth();
+
+    const  {_id,title,imgSrc,price,starRating} = product
 
     return (
         <div className="product-card">
@@ -24,10 +28,22 @@ const ProductCard  = ({product}) => {
             </div>
             </Link>
           <div className="wishlist-btn">
-              <FavoriteIcon
-                className="wishlist-fav-icon"
-              />
-
+          {token && itemInWishlist(_id) ? (
+          <FavoriteIcon
+            className="wishlist-fav-icon"
+            onClick={() =>
+              handleCardBtnsClick(500, removeFromWishlist, product)
+            }
+          />
+        ) : (
+          <FavoriteBorderRoundedIcon
+            onClick={
+              token
+                ? () => handleCardBtnsClick(500, addToWishlist, product)
+                : () => navigate("/login")
+            }
+          />
+        )}
           </div>
           <div className="card-details">
           <Link to={`/product/${_id}`}>
