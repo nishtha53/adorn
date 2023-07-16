@@ -23,6 +23,7 @@ const CategoryCard = ({ catImg, category }) => {
 
     return (
         <div className="category-card-container">
+          <div className="cat-line">
           <div className="category-card">
             <img
               src={catImg}
@@ -34,7 +35,8 @@ const CategoryCard = ({ catImg, category }) => {
               }}
             />
           </div>
-          <p>{category}</p>
+          <p className="cat-name">{category}</p>
+          </div>
         </div>
       );
     };
