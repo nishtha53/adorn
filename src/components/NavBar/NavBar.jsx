@@ -9,6 +9,7 @@ import { useProducts } from "../../contexts/product-context";
 import PersonIcon from "@mui/icons-material/Person";
 import { useAuth } from "../../contexts/auth-context";
 import { useWishlist } from "../../contexts/wishlist-context";
+import { useCart } from "../../contexts/cart-context";
 
 const Navbar = () => {
     
@@ -26,6 +27,10 @@ const Navbar = () => {
     const {
       wishlistState: { wishlist },
     } = useWishlist();
+
+    const {
+      cartState: { cart },
+    } = useCart();
     return (
       <div className="navbar">
         <NavLink to="/">
@@ -64,6 +69,7 @@ const Navbar = () => {
             <NavLink style={activeIconStyles} to="/cart" title="Cart">
               <div className="nav-icon">
                 <ShoppingCartOutlinedIcon /> 
+                {token && cart.length > 0 && <p>{cart.length}</p>}
               </div>
             </NavLink>
           )}
