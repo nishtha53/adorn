@@ -10,7 +10,7 @@ export const products = [
     title: "Traditional Opulent Gold Nath",
     imgSrc : "https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Sites-Tanishq-product-catalog/default/dwe3df3fbb/images/hi-res/513018ORMAAAP3_1.jpg?sw=360&sh=360",
     description: "Flaunt your classy side with the help of this link chain, crafted in 22 karat yellow gold",
-    price: "121395",
+    price: "1000",
     starRating: 4.5,
     category: "Nose pins",
     metalType: "Gold",

@@ -24,13 +24,7 @@ const UserAccount = () => {
                 className={({ isActive }) => (isActive ? "active-tab" : "")}
               >
                 Addresses
-              </NavLink>
-              <NavLink
-                to="/profile/orders"
-                className={({ isActive }) => (isActive ? "active-tab" : "")}
-              >
-                Orders
-              </NavLink>
+              </NavLink>.
             </div>
             <div className="account-data">
               <Outlet />

@@ -102,12 +102,12 @@ import {
       cartState.cart.find((product) => product._id === productId);
   
     const isQuantityZeroInCart = (product) => product?.qty === 0;
-  
+    
     const clearCart = () => {
-      cartState.cart.forEach((product) => {
-        removeFromCart(product);
-      });
-    };
+      cartState.cart.length = 0;
+  }
+
+   
   
     const totalPriceWithoutDiscount = cartState.cart.reduce(
       (acc, curr) => acc + curr?.price * curr?.qty,

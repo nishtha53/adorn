@@ -3,6 +3,7 @@ import { useAddress } from "../../contexts/address-context"
 import AddressModal from "../../components/AddressModal/AddressModal"
 
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
+import OrderDetails from "../../components/OrderDetails/OrderDetails";
 
 const Checkout = () => {
     const {
@@ -74,7 +75,7 @@ const Checkout = () => {
               </button>
             </div>
   
-            {/* <OrderDetails /> */}
+            <OrderDetails />
           </div>
   
           {showAddressModal ? (

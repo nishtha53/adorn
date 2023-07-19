@@ -11,6 +11,7 @@ import UserProfile from "../components/UserProfile/UserProfile";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
 import AddressList from "../components/AddressList/AddressList";
 import Checkout from "../pages/Checkout/Checkout";
+import OrderSuccessfull from "../pages/OrderSuccessfull/OrderSuccessfull";
 
 const NavRoutes = () => {
     return (
@@ -20,6 +21,7 @@ const NavRoutes = () => {
             <Route path="/product/:productID" element={<SingleProduct />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} /> 
+            <Route path='/order-successful' element={<OrderSuccessfull />}/>
 
             <Route
         path="/cart"
