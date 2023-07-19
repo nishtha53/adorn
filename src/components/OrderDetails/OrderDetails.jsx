@@ -56,7 +56,7 @@ const OrderDetails = () => {
           return;
         }
         const razorpayOptions = {
-          key: "rzp_test_HpzCIW6GwqWcop",
+          key: "rzp_test_nmP9cQ2Eol9gFR",
           amount: totalCheckoutAmount * 100,
           currency: "INR",
           name: "Adorn",
