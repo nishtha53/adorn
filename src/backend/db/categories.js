@@ -14,7 +14,7 @@ export const categories = [
   {
     _id: uuid(),
     categoryName: "Gold coins",
-    img: "https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Sites-Tanishq-product-catalog/default/images/hi-res/51E2J1FAIAC00_1.jpg"
+    img: "https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Library-Sites-TanishqSharedLibrary/default/dw489aca65/homepage/shopByCategory/GoldCoin.png"
   },
   {
     _id: uuid(),
