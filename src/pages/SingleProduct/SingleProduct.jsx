@@ -2,20 +2,20 @@ import React from 'react'
 import "./SingleProduct.css"
 
 import { useProducts } from '../../contexts/product-context'
-
+import { useWishlist } from "../../contexts/wishlist-context";
+import { useCart } from "../../contexts/cart-context";
+import { useAuth } from "../../contexts/auth-context";
 import { useNavigate } from "react-router-dom";
 
 import StarRoundedIcon from "@mui/icons-material/StarRounded";
-import CardGiftcardOutlinedIcon from "@mui/icons-material/CardGiftcardOutlined";
-import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
-import PaymentOutlinedIcon from "@mui/icons-material/PaymentOutlined";
+
 
 const SingleProduct = () => {
     const navigate = useNavigate();
     const { productState, isLoading, handleCardBtnsClick } = useProducts();
-    // const { addToWishlist, itemInWishlist } = useWishlist();
-    // const { addToCart, itemInCart } = useCart();
-    // const { token } = useAuth();
+     const { addToWishlist, itemInWishlist } = useWishlist();
+    const { addToCart, itemInCart } = useCart();
+     const { token } = useAuth();
   
     const currentProduct = productState.productDetail;
   
@@ -96,23 +96,45 @@ const SingleProduct = () => {
   
                   <div className="card-action">
                     <div>
-                     
-                        <button
-                          className="single-product-cart-btn"
-                          
-                        >
-                        
-                          Add to Cart
-                        </button>
+                    <button
+                        className="single-product-cart-btn"
+                        onClick={() =>
+                          token
+                            ? itemInCart(_id)
+                              ? navigate("/cart")
+                              : handleCardBtnsClick(
+                                  500,
+                                  addToCart,
+                                  currentProduct
+                                )
+                            : navigate("/login")
+                        }
+                      >
+                        {token && itemInCart(_id)
+                          ? "Go to Cart"
+                          : "Add to Cart"}
+                      </button>
                      
                     </div>
                     <div>
-                      <button
-                        className="single-product-wishlist-btn"
-                         
-                      >
-                        Add to Wishlist
-                      </button>
+                    <button
+                      className="single-product-wishlist-btn"
+                      onClick={() =>
+                        token
+                          ? itemInWishlist(_id)
+                            ? navigate("/wishlist")
+                            : handleCardBtnsClick(
+                                500,
+                                addToWishlist,
+                                currentProduct
+                              )
+                          : navigate("/login")
+                      }
+                    >
+                      {token && itemInWishlist(_id)
+                        ? "Go to Wishlist"
+                        : "Add to Wishlist "}
+                    </button>
                     </div>
                   </div>
                 </div>
