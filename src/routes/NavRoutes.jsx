@@ -9,6 +9,8 @@ import RequiresAuth from "./RequiredAuth";
 import UserAccount from "../pages/UserAccount/UserAccount";
 import UserProfile from "../components/UserProfile/UserProfile";
 import SingleProduct from "../pages/SingleProduct/SingleProduct";
+import AddressList from "../components/AddressList/AddressList";
+import Checkout from "../pages/Checkout/Checkout";
 
 const NavRoutes = () => {
     return (
@@ -24,6 +26,15 @@ const NavRoutes = () => {
         element={
           <RequiresAuth>
             <Cart />
+          </RequiresAuth>
+        }
+      />
+
+<Route
+        path="/checkout"
+        element={
+          <RequiresAuth>
+            <Checkout />
           </RequiresAuth>
         }
       />
@@ -45,7 +56,7 @@ const NavRoutes = () => {
           </RequiresAuth>
         }>
         <Route path="" element={<UserProfile />} />
-
+        <Route path="addresses" element={<AddressList />} />
       </Route>
         </Routes>
     )

@@ -15,5 +15,17 @@ export const users = [
     password: "nishtha",
     createdAt: formatDate(),
     updatedAt: formatDate(),
+    address: [
+      {
+        _id: uuid(),
+        name: "Nishtha thakkar",
+        street: "83, purshottam nagar",
+        city: "Ahmedabad",
+        state: "Gujarat",
+        zipcode: '318005',
+        country: 'India',
+        mobile: '3524652340',
+    },
+    ]
   },
 ];

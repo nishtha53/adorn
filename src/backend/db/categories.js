@@ -13,7 +13,7 @@ export const categories = [
   },
   {
     _id: uuid(),
-    categoryName: "Gold chain",
+    categoryName: "Gold coins",
     img: "https://www.tanishq.co.in/dw/image/v2/BKCK_PRD/on/demandware.static/-/Sites-Tanishq-product-catalog/default/images/hi-res/51E2J1FAIAC00_1.jpg"
   },
   {
