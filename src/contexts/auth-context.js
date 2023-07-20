@@ -1,6 +1,8 @@
 import { createContext, useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { loginService, signupService } from "../services/authService";
+import { toast } from "react-hot-toast";
+
 
 export const AuthContext = createContext();
 
@@ -34,10 +36,13 @@ export const AuthProvider = ({children}) => {
             );
             setToken(encodedToken);
             setCurrentUser(createdUser);
+            toast.success(`Hi, ${createdUser.firstName}!`, {
+              icon: "👋",
+            });
             navigate("/", { replace: true });
           }
         } catch (error) {
-          console.error(error);
+          toast.error("There was an error signing you up.");
         }
       };
     
@@ -56,10 +61,15 @@ export const AuthProvider = ({children}) => {
             );
             setToken(encodedToken);
             setCurrentUser(foundUser);
+            toast.success(`Welcome back, ${foundUser.firstName}!`, {
+              icon: "👋",
+            });
             navigate(location?.state?.from?.pathname || "/", { replace: true });
           }
         } catch (error) {
           console.error(error);
+          toast.error("User does not exist! Please sign up.");
+
         }
       };
     
@@ -67,6 +77,7 @@ export const AuthProvider = ({children}) => {
         localStorage.removeItem("login");
         setToken(null);
         setCurrentUser(null);
+        toast.success("Logged out successfully!");
       };
 
       return (

@@ -6,6 +6,7 @@ import {
     createContext,
   } from "react";
   import { useAuth } from "./auth-context";
+  import { toast } from "react-hot-toast";
   import addressReducer, {
     initialAddressState,
     initialAddressInput,
@@ -57,7 +58,7 @@ import {
         } = response;
         if (status === 201) {
           addressDispatch({ type: "ADD_NEW_ADDRESS", payload: address });
-          //toast.success("Added new address successfully!");
+          toast.success("Added new address successfully!");
         }
       } catch (error) {
         console.error(error);
@@ -73,7 +74,7 @@ import {
         } = response;
         if (status === 200) {
           addressDispatch({ type: "REMOVE_ADDRESS", payload: address });
-          //toast.success("Removed address succesfully!");
+          toast.success("Removed address succesfully!");
         }
       } catch (error) {
         console.error(error);
@@ -89,7 +90,7 @@ import {
         } = response;
         if (status === 201) {
           addressDispatch({ type: "DISPLAY_ADDRESSES", payload: address });
-          //toast.success("Updated the address successfully!");
+          toast.success("Updated the address successfully!");
         }
       } catch (error) {
         console.error(error);

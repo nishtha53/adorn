@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 
 import { useEffect } from "react";
 
+import { toast } from "react-hot-toast";
 
 import { useAddress } from "../../contexts/address-context";
 
@@ -63,7 +64,7 @@ const dummyAddress = {
     const addAddressHandler = (event) => {
       event.preventDefault();
       if (zipcodeError || mobileError) {
-        //toast.error("Please enter valid inputs.");
+        toast.error("Please enter valid inputs.");
       } else {
         const addressExist = addresses.find(
           (address) => address._id === addressFormData._id

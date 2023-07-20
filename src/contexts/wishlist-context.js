@@ -7,6 +7,7 @@ import {
   } from "react";
 
   import { useAuth } from "./auth-context";
+  import { toast } from "react-hot-toast";
 
   import wishlistReducer, {initialWishlistState} from "../reducers/wishListReducer";
 
@@ -50,10 +51,11 @@ import {
         } = response;
         if (status === 201) {
           wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: wishlist });
+          toast.success(`${product.title} added to favorites!`);
         }
       } catch (error) {
         console.error(error);
-        //toast.error("Not able to add to favorites.");
+        toast.error("Not able to add to favorites.");
       }
     };
   
@@ -66,10 +68,11 @@ import {
         } = response;
         if (status === 200) {
           wishlistDispatch({ type: "REMOVE_FROM_WISHLIST", payload: wishlist });
+          toast.success("No longer favorite jewellery!");
         }
       } catch (error) {
         console.error(error);
-        //toast.error("Unable to remove from favorites.");
+        toast.error("Unable to remove from favorites.");
       }
     };
   

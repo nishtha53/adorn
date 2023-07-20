@@ -6,6 +6,7 @@ import {
     useEffect,
   } from "react";
   import { useAuth } from "./auth-context";
+  import { toast } from "react-hot-toast";
   import {
     getCartService,
     addToCartService,
@@ -50,11 +51,11 @@ import {
         } = response;
         if (status === 201) {
           cartDispatch({ type: "ADD_TO_CART", payload: cart });
-          //toast.success(`${product.title} added to cart successfully!`);
+          toast.success(`${product.title} added to cart successfully!`);
         }
       } catch (error) {
         console.error(error);
-        //toast.error("Not able to add to cart.");
+        toast.error("Not able to add to cart.");
       }
     };
   
@@ -67,11 +68,11 @@ import {
         } = response;
         if (status === 200) {
           cartDispatch({ type: "REMOVE_FROM_CART", payload: cart });
-          //toast.success(`${title} removed from cart successfully!`);
+          toast.success(`${title} removed from cart successfully!`);
         }
       } catch (error) {
         console.error(error);
-        //toast.error("Unable to remove from cart.");
+        toast.error("Unable to remove from cart.");
       }
     };
   
@@ -94,7 +95,7 @@ import {
         }
       } catch (error) {
         console.error(error);
-        //toast.error("Unable to update quantity.");
+        toast.error("Unable to update quantity.");
       }
     };
   
